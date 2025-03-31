@@ -77,8 +77,9 @@ const SearchPage = () => {
                         </span>
                     </div>
                 </div>
-                <CardContent className="p-4">
-                    <h1 className="text-2xl top-0 font-bold text-gray-900 dark:text-gray-100">Pizza House</h1>
+                <CardContent>
+                    <h1 className="text-2xl top-0 font-bold dark:text-gray-100 
+                    bg-gradient-to-r from-orange-500 via-green-500 to-pink-500 bg-clip-text text-transparent">Pizza House</h1>
                     <div className="mt-2 gap-1 flex items-center text-gray-600 dark:text-gray-400">
                         <MapPin size={16}/>
                         <p className="text-sm">
