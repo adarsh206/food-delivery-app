@@ -1,37 +1,18 @@
 import { Link } from "react-router-dom";
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarTrigger,
-} from "./ui/menubar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from "./ui/menubar";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
 import { HandPlatter, Loader2, Menu, Moon, PackageCheck, ShoppingCart, SquareMenu, Sun, User, UtensilsCrossed } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "./ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { Separator } from "./ui/separator";
+
 
 const Navbar = () => {
   const admin = true;
   const loading = false;
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto drop-shadow-lg border-b-2">
       <div className="flex items-center justify-between h-14">
         <Link to="/">
           <h1
@@ -44,14 +25,14 @@ const Navbar = () => {
         </Link>
         <div className="hidden md:flex items-center gap-10">
           <div className="hidden md:flex items-center gap-6">
-            <Link to="/">Home</Link>
-            <Link to="/profile">Profile</Link>
-            <Link to="/order/status">Orders</Link>
+            <Link to="/" className="active:text-orange-600 active:underline">Home</Link>
+            <Link to="/profile" className="active:text-orange-600 active:underline">Profile</Link>
+            <Link to="/order/status" className="active:text-orange-600 active:underline">Orders</Link>
 
             {admin && (
               <Menubar>
                 <MenubarMenu>
-                  <MenubarTrigger>Dashboard</MenubarTrigger>
+                  <MenubarTrigger className="active:text-orange-600 active:underline">Dashboard</MenubarTrigger>
                   <MenubarContent>
                     <Link to="/admin/restaurant">
                       <MenubarItem>Restaurant</MenubarItem>

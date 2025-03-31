@@ -26,7 +26,7 @@ const HeroSection = () => {
               value={searchText}
               placeholder="Search restaurant by name, city & country"
               onChange={(e) => setSearchText(e.target.value)}
-              className="pl-10 shadow-lg focus-visible:ring-0 focus-visible::border focus-visible:border-orange-500 focus-visible:shadow-amber-500"
+              className="pl-10 shadow-lg focus-visible:ring-0 focus-visible:border focus-visible:border-orange-500 focus-visible:shadow-amber-500"
             />
          <Search className="text-gray-500 absolute inset-y-2 left-2" />
             <Button onClick={() => navigate(`/search/${searchText}`)} className="bg-orange hover:bg-hoverColor">Search</Button>
