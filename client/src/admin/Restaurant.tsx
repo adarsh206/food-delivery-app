@@ -42,7 +42,7 @@ const Restaurant = () => {
     <div className="max-w-6xl mx-auto my-10">
       <div>
         <div>
-          <h1 className="font-extrabold text-2xl mb-5 bg-gradient-to-r from-orange-500 via-green-500 to-rose-500 bg-clip-text text-transparent">
+          <h1 className="font-extrabold text-2xl mb-5 bg-gradient-to-r from-orange-500 via-green-500 to-pink-500 bg-clip-text text-transparent">
             Add Restaurant
           </h1>
           <form onSubmit={submitHandler}>
