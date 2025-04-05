@@ -11,24 +11,26 @@ import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
 import { Loader2 } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { MenuFormSchema, menuSchema } from "../schema/menuSchema";
 
 const EditMenu = ({
   selectedMenu,
   editOpen,
   setEditOpen,
 }: {
-  selectedMenu: any;
+  selectedMenu: MenuFormSchema;
   editOpen: boolean;
   setEditOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
     
-    const [input, setInput] = useState<any>({
+    const [input, setInput] = useState<MenuFormSchema>({
         name: "",
         description: "",
         price: 0,
         image: undefined,
       });
-      
+
+      const [error, setError] = useState<Partial<MenuFormSchema>>({})
       const loading = false;
       const changeEventHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value, type } = e.target;
@@ -37,6 +39,14 @@ const EditMenu = ({
     
     const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+         const result = menuSchema.safeParse(input);
+            if(!result.success){
+              const fieldErrors = result.error.formErrors.fieldErrors;
+              setError(fieldErrors as Partial<MenuFormSchema>);
+              return;
+            }
+
+        // api start here
     }
 
     useEffect(() => { 
@@ -68,6 +78,7 @@ const EditMenu = ({
                   placeholder="Enter menu name"
                   className="focus-visible:ring-0 focus-visible:border-amber-500 focus-visible:shadow-amber-500 focus-visible:shadow-lg"
                 />
+                 {error && <span className="text-xs font-medium text-red-600">{error.name}</span>}
               </div>
               <div className="my-4">
                 <Label className="mb-2">Description</Label>
@@ -79,17 +90,19 @@ const EditMenu = ({
                   placeholder="Enter menu description"
                   className="focus-visible:ring-0 focus-visible:border-amber-500 focus-visible:shadow-amber-500 focus-visible:shadow-lg"
                 />
+                 {error && <span className="text-xs font-medium text-red-600">{error.description}</span>}
               </div>
               <div className="my-4">
                 <Label className="mb-2">Price in (Rupees)</Label>
                 <Input
-                  type="text"
+                  type="number"
                   name="price"
                   value={input.price}
                   onChange={changeEventHandler}
                   placeholder="Enter menu price"
                   className="focus-visible:ring-0 focus-visible:border-amber-500 focus-visible:shadow-amber-500 focus-visible:shadow-lg"
                 />
+                 {error && <span className="text-xs font-medium text-red-600">{error.price}</span>}
               </div>
               <div className="my-4">
                 <Label className="mb-2">Upload Menu Image</Label>
@@ -104,6 +117,7 @@ const EditMenu = ({
                   }
                   placeholder="Enter menu image"
                 />
+                 {error && <span className="text-xs font-medium text-red-600">{error.image?.name}</span>}
               </div>
               <DialogFooter className="mt-5">
                 {loading ? (
